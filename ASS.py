@@ -140,8 +140,8 @@ class ASS:                  # 时轴类
                             location[i], tdelta*1000, end[i], tmp))
                         chuishanzhou += "第{}行轴是闪轴（{}ms），但是我给你改好了\n以防万一告诉你一下从{}改成了{}\n\n".format(
                             location[i], tdelta*1000, end[i], tmp)
-                        self.line[i] = self.line[i].replace(
-                            self.line[i].split(',')[2], tmp)
+                        self.line[location[i]-1] = self.line[location[i]-1].replace(
+                            self.line[location[i]-1].split(',')[2], tmp)
                         end[i] = tmp
 
             # 再锤行与行之间的闪轴
@@ -176,7 +176,8 @@ class ASS:                  # 时轴类
                                     location[i], location[k], tdelta*1000, start[k]))
                                 chuishanzhou+="第{}行轴和第{}行轴之间是闪轴（{}ms），不过我给你连上了（{}）\n".format(
                                                 location[i], location[k], tdelta*1000, start[k])
-                                self.line[i] = self.line[i].replace(self.line[i].split(',')[2], start[k])
+                                self.line[location[i]-1] = self.line[location[i]-1].replace(
+                                    self.line[location[i]-1].split(',')[2], start[k])
                                 end[i]=start[k]
                             else:
                                 tneeded = 0.3-tdelta                            # 看看要改多少
