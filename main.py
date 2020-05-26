@@ -17,29 +17,27 @@ if __name__ == "__main__":
             biaodian=eval(f.read())
 
     except FileNotFoundError:
-        print('没有找到文件！\n使用默认标点替换方案。。。')
+        print('没有找到字符替换文件！\n')
         while True:
             chongjian=input('是否需要重建标点替换的txt文件？(y/n) ')
             if chongjian=='y':
                 with open('biaodian.txt', 'w+', encoding='utf-8') as fb:
                     fb.write(str(bd2))
-                print('重建成功！将以默认替换方案查轴')
+                print('重建成功！')
                 break
             elif chongjian=='n':
-                print('将在不重建txt情况下以默认标点替换方案查轴')
                 break
 
     except SyntaxError:
-        print('字典格式有误！\n请检查是否用的英文逗号，英文分号，或者是没有写完！')
+        print('字典格式有误！\n请检查是否用的英文逗号，英文分号，或者是没有写完！\n')
         while True:
             chongjian=input('是否需要重建标点替换的txt文件？(y/n) ')
             if chongjian=='y':
                 with open('biaodian.txt', 'w+', encoding='utf-8') as fb:
                     fb.write(str(bd2))
-                print('重建成功！将以默认替换方案查轴')
+                print('重建成功！')
                 break
             elif chongjian=='n':
-                print('将在不重建txt情况下以默认标点替换方案查轴')
                 break
 
     else:
