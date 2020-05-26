@@ -114,7 +114,8 @@ class ASS:                  # 时轴类
                             )
                             chuishanzhou += "第{}行轴（{}ms）要是不闪就和第{}行轴之间是闪轴了，不过我姑且给你连上了（{}）\n".format(
                                 location[i], tdelta*1000, location[j], start[j])
-                            self.line[i] = self.line[i].replace(self.line[i].split(',')[2], start[j])
+                            self.line[location[i]-1] = self.line[location[i]-1].replace(
+                                self.line[location[i]-1].split(',')[2], start[j])
                             end[i] = start[j]
                         else:
                             print("第{}行轴（{}ms）要是不闪就和第{}行轴之间是闪轴了，草这啥神轴啊，你自己看着改吧".format(
