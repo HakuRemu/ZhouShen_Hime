@@ -50,8 +50,15 @@ if __name__ == "__main__":
             elif lian=='n':
                 lian=False
                 break
+        while True:
+            try:
+                chang=eval(input('长轴时间（s）：'))
+            except NameError:
+                continue
+            else:
+                break
         for d in os.listdir():
             name, extension = os.path.splitext(d)
             if extension == '.ass' and os.path.isfile(d) and name[0:2] != '改-':
-                ass = ASS(name, biaodian, lian)
+                ass = ASS(name, biaodian, chang, lian=lian)
                 ass.out()

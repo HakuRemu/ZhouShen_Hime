@@ -2,10 +2,11 @@ import re
 from asstm import *
 
 class ASS:                  # 时轴类
-    def __init__(self, name, biaodian, lian=True):
+    def __init__(self, name, biaodian, chang, lian=True):
         self.name = name
         self.bd2=biaodian
         self.lian=lian
+        self.chang=chang
         # 读入轴的全部内容（包括对话、注释）
         with open(self.name+'.ass', encoding='utf-8-sig') as f:
             self.line, self.header = [], []
@@ -101,7 +102,11 @@ class ASS:                  # 时轴类
         for i in range(lenth):
             shenzhou = False              # 是不是六亲不认轴
             # 先锤行自己的闪轴
-            if timedelta(end[i], start[i]) <= 0.49 and timedelta(end[i], start[i]) > 0:
+            if timedelta(end[i], start[i]) > self.chang:
+                tdelta = timedelta(end[i], start[i])
+                print('第{}行轴是长轴，请注意（{}s）'.format(location[i], tdelta))
+                chuishanzhou += '第{}行轴是长轴，请注意（{}s）\n'.format(location[i], tdelta)
+            elif timedelta(end[i], start[i]) <= 0.49 and timedelta(end[i], start[i]) > 0:
                 tdelta = timedelta(end[i], start[i])                   # 轴的时间
                 tneeded = 0.5-tdelta                                   # 算出要加的时间
                 for j in range(lenth):
