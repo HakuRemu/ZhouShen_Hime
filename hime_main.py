@@ -74,9 +74,9 @@ class zhoushen_GUi(QMainWindow, Ui_MainWindow):
     def rBstate(self, radioButton):
         if radioButton.isChecked():
             self.textBrowser.append('开启无脑连轴模式！')
-            self.gai_shan_zhou == True
-        else:
-            self.gai_shan_zhou == False
+            self.gai_shan_zhou = True
+        # else:
+        #     self.gai_shan_zhou == False
 
     def fileopen(self):
         self.fileName_path, self.filetype = QFileDialog.getOpenFileName(self,
